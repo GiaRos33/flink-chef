@@ -3,7 +3,10 @@ include_attribute "hops"
 
 default['flink']['user']                             = node['install']['user'].empty? ? "flink" : node['install']['user']
 default['flink']['user-home']                        = "/home/#{node['flink']['user']}"
-
+default['flink']['uid']                              = "10090"
+default['flink']['gid']                              = "10091"
+default['hdfs']['uid']                               = "10100"
+default['hdfs']['gid']                               = "10101"
 default['flink']['version_base']                     = "1.9"
 default['flink']['version_bugfix']                   = "2.1"
 default['flink']['version']                          = node['flink']['version_base'] + "." + node['flink']['version_bugfix']
