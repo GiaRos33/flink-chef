@@ -14,6 +14,7 @@ user node['hops']['hdfs']['user'] do
   shell "/bin/bash"
   manage_home true
   action :create
+  uid node['hdfs']['uid']
   not_if "getent passwd #{node['hops']['hdfs']['user']}"
   not_if { node['install']['external_users'].casecmp("true") == 0 }
 end
@@ -26,6 +27,7 @@ end
 
 user node['flink']['user'] do
   action :create
+  uid node['flink']['uid']
   gid node['hops']['group']
   manage_home true
   home node['flink']['user-home']
